@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Contractdocument>
+  <AL>
+    <AL_VIEWCOD>36011</AL_VIEWCOD>
+  </AL>
+  <PP>
+    <PP_BETTERM>1</PP_BETTERM>
+    <PP_INGDAT>20190911</PP_INGDAT>
+    <AO>
+      <AO_EINDLFT>68</AO_EINDLFT>
+      <AO_ENDLFTD>68</AO_ENDLFTD>
+    </AO>
+    <VZ>
+      <VZ_GEBDAT>19700227</VZ_GEBDAT>
+      <IK>
+        <IK_BEROEPC>1</IK_BEROEPC>
+        <IK_NEVBRP>N</IK_NEVBRP>
+      </IK>
+    </VZ>
+  </PP>
+  <XG>
+    <XG_STATUS>2</XG_STATUS>
+  </XG>
+</Contractdocument>
