@@ -190,6 +190,14 @@ namespace Tjip.Gateway.Services
         {
             get
             {
+                if (NodeType == XmlNodeType.Element)
+                {
+                    return base.Name;
+                }
+                else
+                {
+                    return base.Name;
+                }
                 // The Name needs translation as well, but it isn't used by the deserializer.
                 throw new NotImplementedException();
             }

@@ -10,6 +10,8 @@ namespace Tjip.Gateway.Tests.Domain
     public class Deserialize
     {
         private const string RootnodeName = "CalculatePremiumRequestType";
+        private const string nsOperation = "http://www.tempuri.org/proposition/Operations/2019/10";
+        private const string nsDatamodel = "http://www.tempuri.org/proposition/Datamodel/2019/10";
 
         [Fact]
         public void WithStringRootnodenameSucceeds()
@@ -22,10 +24,7 @@ namespace Tjip.Gateway.Tests.Domain
         public void WithTypeofRootnodenameSucceeds()
         {
             var rootnodename = typeof(CalculatePremiumRequestType).Name;
-            if (rootnodename == RootnodeName)
-            {
-                //rootnodename = RootnodeName; // uncomment to let this succeed
-            }
+        
             var request = FileTo<CalculatePremiumRequestType>("Contractdocument.xml", rootnodename);
         }
 
@@ -44,13 +43,18 @@ namespace Tjip.Gateway.Tests.Domain
             var ns = new XmlNamespaceManager(nt);
             var context = new XmlParserContext(nt, ns, string.Empty, XmlSpace.Default);
 
+            rootnodeName = nt.Add(rootnodeName);
+            var Contractdocument = nt.Add("Contractdocument");
+            var AL = nt.Add("AL");
+            var PP = nt.Add("PP");
+            var XG = nt.Add("XG");
             var emptyNs = string.Empty;
             var tr = new TranslatingXmlReader(xmlData, XmlNodeType.Document, context)
-                .AddNameAndNsTranslation(emptyNs, "Contractdocument", emptyNs, rootnodeName)
-                .AddNameAndNsTranslation(emptyNs, "AL", "http://www.tempuri.org/proposition/Operations/2019/10", "AL")
-                .AddNameAndNsTranslation(emptyNs, "PP", "http://www.tempuri.org/proposition/Operations/2019/10", "PP")
-                .AddNameAndNsTranslation(emptyNs, "XG", "http://www.tempuri.org/proposition/Operations/2019/10", "XG")
-                .AddNamespaceUriTranslation(emptyNs, "http://www.tempuri.org/proposition/Datamodel/2019/10");
+                .AddNameAndNsTranslation(emptyNs, Contractdocument, emptyNs, rootnodeName)
+                .AddNameAndNsTranslation(emptyNs, AL, nsOperation, AL)
+                .AddNameAndNsTranslation(emptyNs, PP, nsOperation, PP)
+                .AddNameAndNsTranslation(emptyNs, XG, nsOperation, XG)
+                .AddNamespaceUriTranslation(emptyNs, nsDatamodel);
 
             return tr;
         }
